@@ -1,3 +1,6 @@
+//Using dotenv to store space ID and access token
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -6,6 +9,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.SPACE,
+        accessToken: process.env.TOKEN,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
